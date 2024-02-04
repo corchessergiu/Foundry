@@ -37,7 +37,7 @@ contract TimeTest is Test {
     }
 
     function testTimestamp() public {
-        uint t = block.timestamp;
+        uint256 t = block.timestamp;
         skip(100);
         assertEq(block.timestamp, t + 100);
         rewind(10);
@@ -45,7 +45,7 @@ contract TimeTest is Test {
     }
 
     function testBlockNumber() public {
-        uint b = block.number;
+        uint256 b = block.number;
         vm.roll(999);
         assertEq(block.number, 999);
     }
