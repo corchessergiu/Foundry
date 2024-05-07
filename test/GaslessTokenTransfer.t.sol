@@ -3,10 +3,9 @@ pragma solidity 0.8.20;
 
 import "forge-std/Test.sol";
 import "forge-std/console.sol";
-import "../src/app/GaslessTokenTransfer.sol";
 
-import "../../src/ERC20Permit.sol";
-import "../../src/app/GaslessTokenTransfer.sol";
+import "../src/ERC20Permit.sol";
+import "../src/app/GaslessTokenTransfer.sol";
 
 contract GaslessTokenTransferTest is Test {
     ERC20Permit private token;
@@ -29,7 +28,7 @@ contract GaslessTokenTransferTest is Test {
     }
 
     function testValidSig() public {
-        uint deadline = block.timestamp + 60;
+        uint256 deadline = block.timestamp + 60;
         //Prepare permit message
         bytes32 permitHash = _getPermitHash(sender, address(gasless), AMOUNT + FEE, token.nonces(sender), deadline);
         (uint8 v, bytes32 r, bytes32 s) = vm.sign(SENDER_PRIVATE_KEY, permitHash);
